@@ -14,11 +14,11 @@ interface ProjectImages {
 // Project descriptions
 const projectDescriptions = {
 	project1:
-		"NEBULA is a modern e-commerce platform built with Next.js and Stripe integration. Features include user authentication, product filtering, shopping cart, and payment processing.",
+		"A self-hosted Web Application that allows storage operations such as uploading, sharing, viewing, and organization creation, with real-time features for Antipolo Campus.",
 	project2:
-		"Doggie is a social media app for dog lovers. Users can share photos, like posts, comment, and connect with other dog owners. Built with React Native and Firebase.",
+		"A fully responsive dog adoption website that allows users to browse various dog breeds, view detailed information about each dog, and easily complete the adoption process to give a furry friend a loving home",
 	project3:
-		"Software Suite is a collection of productivity tools including a task manager, note-taking app, and time tracker. Built with TypeScript, Node.js, and PostgreSQL.",
+		"Breakfast at Antonio's is a streamlined ordering system designed to help customers effortlessly browse menu items, customize their selections, and place food orders directly from the restaurant.",
 };
 
 // Sample image data for each project
@@ -119,14 +119,14 @@ export default function Projects() {
 		<>
 			<section
 				id="projects"
-				className={`min-h-screen flex flex-col justify-start px-6 md:px-12 py-20 transition-colors duration-300 ${
+				className={`min-h-screen flex flex-col justify-start px-4 sm:px-6 md:px-12 py-12 sm:py-16 md:py-20 transition-colors duration-300 ${
 					darkMode ? "bg-[#0c080d]" : "bg-white"
 				}`}
 			>
 				<div className="max-w-6xl w-full mx-auto">
 					{/* Heading */}
 					<h1
-						className={`text-5xl md:text-7xl font-bold mb-12 text-center transition-colors duration-300 ${
+						className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center transition-colors duration-300 ${
 							darkMode ? "text-white" : "text-gray-900"
 						}`}
 					>
@@ -134,13 +134,13 @@ export default function Projects() {
 					</h1>
 
 					{/* Button Group */}
-					<div className="flex flex-wrap justify-center gap-4 mb-8">
+					<div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-10 px-2">
 						{(["project1", "project2", "project3"] as const).map((project) => (
 							<button
 								key={project}
 								onClick={() => handleProjectClick(project)}
 								className={`
-									px-8 py-3 rounded-full font-medium text-lg transition-all duration-300
+									px-3 sm:px-5 md:px-7 lg:px-8 py-1.5 sm:py-2 md:py-2.5 lg:py-3 rounded-full font-medium text-xs sm:text-sm md:text-base lg:text-lg transition-all duration-300 whitespace-nowrap
 									${
 										activeProject === project
 											? darkMode
@@ -160,9 +160,9 @@ export default function Projects() {
 					</div>
 
 					{/* Project Description */}
-					<div className="max-w-3xl mx-auto mb-12 text-center">
+					<div className="max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 text-center px-4 sm:px-6">
 						<p
-							className={`text-lg md:text-xl leading-relaxed transition-colors duration-300 ${
+							className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed transition-colors duration-300 ${
 								darkMode ? "text-gray-300" : "text-gray-600"
 							}`}
 						>
@@ -170,9 +170,9 @@ export default function Projects() {
 						</p>
 					</div>
 
-					{/* Image Grid with Transition */}
+					{/* Image Grid with Transition - FIXED for mobile */}
 					<div className="transition-all duration-500 ease-in-out">
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-fr">
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 auto-rows-fr">
 							{currentImages.map((imageUrl, index) => (
 								<div
 									key={`${activeProject}-${index}`}
@@ -182,18 +182,19 @@ export default function Projects() {
 									}}
 									onClick={() => openModal(index)}
 								>
-									<div className="aspect-video relative w-full">
+									<div className="relative w-full pt-[56.25%]">
+										{/* 16:9 aspect ratio wrapper */}
 										<Image
 											src={imageUrl}
 											alt={`${activeProject} image ${index + 1}`}
 											fill
 											className="object-cover transition-transform duration-700 group-hover:scale-110"
-											sizes="(max-width: 768px) 100vw, 50vw"
+											sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
 										/>
 									</div>
 									{/* Overlay on hover */}
 									<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-										<span className="text-white text-lg font-medium">
+										<span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium px-2 text-center">
 											Click to expand
 										</span>
 									</div>
@@ -234,7 +235,7 @@ export default function Projects() {
 						aria-label="Close fullscreen view"
 					>
 						<svg
-							className="w-8 h-8 text-white"
+							className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -254,11 +255,11 @@ export default function Projects() {
 							e.stopPropagation();
 							prevImage();
 						}}
-						className="absolute left-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+						className="absolute left-2 sm:left-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 group"
 						aria-label="Previous image"
 					>
 						<svg
-							className="w-6 h-6 text-white md:w-8 md:h-8"
+							className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -278,11 +279,11 @@ export default function Projects() {
 							e.stopPropagation();
 							nextImage();
 						}}
-						className="absolute right-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300 hover:scale-110 group"
+						className="absolute right-2 sm:right-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 group"
 						aria-label="Next image"
 					>
 						<svg
-							className="w-6 h-6 text-white md:w-8 md:h-8"
+							className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -296,9 +297,23 @@ export default function Projects() {
 						</svg>
 					</button>
 
-					{/* Image Counter */}
-					<div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
-						{currentImageIndex + 1} / {currentImages.length}
+					{/* Image Counter - Changed to Dots */}
+					<div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex gap-1.5 sm:gap-2">
+						{currentImages.map((_, idx) => (
+							<button
+								key={idx}
+								onClick={(e) => {
+									e.stopPropagation();
+									setCurrentImageIndex(idx);
+								}}
+								className={`transition-all duration-300 rounded-full ${
+									idx === currentImageIndex
+										? "bg-white w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3"
+										: "bg-white/40 w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 hover:bg-white/70"
+								}`}
+								aria-label={`Go to image ${idx + 1}`}
+							/>
+						))}
 					</div>
 
 					{/* Modal Content */}

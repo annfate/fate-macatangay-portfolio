@@ -9,7 +9,7 @@ export default function Footer() {
 	const socialLinks = [
 		{
 			name: "LinkedIn",
-			url: "https://linkedin.com/in/yourusername",
+			url: "https://www.linkedin.com/in/fate-macatangay/",
 			icon: (
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ export default function Footer() {
 		},
 		{
 			name: "GitHub",
-			url: "https://github.com/yourusername",
+			url: "https://github.com/annfate",
 			icon: (
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export default function Footer() {
 		},
 		{
 			name: "Indeed",
-			url: "https://indeed.com/r/yourusername",
+			url: "https://profile.indeed.com/?hl=en_PH&co=PH&from=gnav-homepage",
 			icon: (
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -53,21 +53,21 @@ export default function Footer() {
 				</svg>
 			),
 		},
-		{
-			name: "Gmail",
-			url: "mailto:your.email@gmail.com",
-			icon: (
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="currentColor"
-				>
-					<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-				</svg>
-			),
-		},
+		// {
+		// 	name: "Gmail",
+		// 	url: "mailto:smacatafate@gmail.com",
+		// 	icon: (
+		// 		<svg
+		// 			xmlns="http://www.w3.org/2000/svg"
+		// 			width="20"
+		// 			height="20"
+		// 			viewBox="0 0 24 24"
+		// 			fill="currentColor"
+		// 		>
+		// 			<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+		// 		</svg>
+		// 	),
+		// },
 	];
 
 	return (

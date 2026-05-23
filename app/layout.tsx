@@ -1,4 +1,3 @@
-// @ts-expect-error: temporary fix for type mismatch in Next.js layout
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -12,20 +11,6 @@ export const metadata: Metadata = {
 	title: "Fate Portfolio",
 	description: "My portfolio website",
 };
-
-// export default function RootLayout({
-// 	children,
-// }: Readonly<{
-// 	children: React.ReactNode;
-// }>) {
-// 	return (
-// 		<html lang="en">
-// 			<body className={inter.className}>
-// 				<ThemeProvider>{children}</ThemeProvider>
-// 			</body>
-// 		</html>
-// 	);
-// }
 export default function RootLayout({
 	children,
 }: {
