@@ -48,26 +48,10 @@ export default function Footer() {
 					viewBox="0 0 24 24"
 					fill="currentColor"
 				>
-					{/* Fixed Indeed icon - using a proper "i" letter icon */}
 					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-6h2v6zm-1-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8 7h-2v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v-6h2v1.03c.45-.63 1.17-1.03 2-1.03 1.66 0 3 1.34 3 3v3z" />
 				</svg>
 			),
 		},
-		// {
-		// 	name: "Gmail",
-		// 	url: "mailto:smacatafate@gmail.com",
-		// 	icon: (
-		// 		<svg
-		// 			xmlns="http://www.w3.org/2000/svg"
-		// 			width="20"
-		// 			height="20"
-		// 			viewBox="0 0 24 24"
-		// 			fill="currentColor"
-		// 		>
-		// 			<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-		// 		</svg>
-		// 	),
-		// },
 	];
 
 	return (

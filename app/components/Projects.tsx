@@ -1,17 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useTheme } from "../context/ThemeContext";
 
-// Define the structure for project images
 interface ProjectImages {
 	project1: string[];
 	project2: string[];
 	project3: string[];
 }
 
-// Project descriptions
 const projectDescriptions = {
 	project1:
 		"A self-hosted Web Application that allows storage operations such as uploading, sharing, viewing, and organization creation, with real-time features for Antipolo Campus.",
@@ -21,7 +19,6 @@ const projectDescriptions = {
 		"Breakfast at Antonio's is a streamlined ordering system designed to help customers effortlessly browse menu items, customize their selections, and place food orders directly from the restaurant.",
 };
 
-// Sample image data for each project
 const projectImagesData: ProjectImages = {
 	project1: [
 		"/projects/1NEBULA/1.1.jpg",
@@ -50,42 +47,35 @@ export default function Projects() {
 	const [modalOpen, setModalOpen] = useState(false);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-	// Get current project images and description
 	const currentImages = projectImagesData[activeProject];
 	const currentDescription = projectDescriptions[activeProject];
 
-	// Navigate to previous image
 	const prevImage = useCallback(() => {
 		setCurrentImageIndex((prev) =>
 			prev === 0 ? currentImages.length - 1 : prev - 1,
 		);
 	}, [currentImages.length]);
 
-	// Navigate to next image
 	const nextImage = useCallback(() => {
 		setCurrentImageIndex((prev) =>
 			prev === currentImages.length - 1 ? 0 : prev + 1,
 		);
 	}, [currentImages.length]);
 
-	// Close modal
 	const closeModal = useCallback(() => {
 		setModalOpen(false);
 	}, []);
 
-	// Open modal with selected image
 	const openModal = (index: number) => {
 		setCurrentImageIndex(index);
 		setModalOpen(true);
 	};
 
-	// Handle project click with transition effect
 	const handleProjectClick = (project: keyof ProjectImages) => {
 		if (project === activeProject) return;
 		setActiveProject(project);
 	};
 
-	// Handle body scroll when modal opens/closes
 	useEffect(() => {
 		if (modalOpen) {
 			document.body.style.overflow = "hidden";
@@ -93,13 +83,11 @@ export default function Projects() {
 			document.body.style.overflow = "unset";
 		}
 
-		// Cleanup function
 		return () => {
 			document.body.style.overflow = "unset";
 		};
 	}, [modalOpen]);
 
-	// Handle keyboard events
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (!modalOpen) return;
@@ -124,7 +112,6 @@ export default function Projects() {
 				}`}
 			>
 				<div className="max-w-6xl w-full mx-auto">
-					{/* Heading */}
 					<h1
 						className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center transition-colors duration-300 ${
 							darkMode ? "text-white" : "text-gray-900"
@@ -133,7 +120,6 @@ export default function Projects() {
 						Projects
 					</h1>
 
-					{/* Button Group */}
 					<div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-10 px-2">
 						{(["project1", "project2", "project3"] as const).map((project) => (
 							<button
@@ -159,7 +145,6 @@ export default function Projects() {
 						))}
 					</div>
 
-					{/* Project Description */}
 					<div className="max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 text-center px-4 sm:px-6">
 						<p
 							className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed transition-colors duration-300 ${
@@ -170,20 +155,15 @@ export default function Projects() {
 						</p>
 					</div>
 
-					{/* Image Grid with Transition - FIXED for mobile */}
 					<div className="transition-all duration-500 ease-in-out">
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-5 auto-rows-fr">
 							{currentImages.map((imageUrl, index) => (
 								<div
 									key={`${activeProject}-${index}`}
-									className="relative group overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl animate-fadeIn cursor-pointer"
-									style={{
-										animation: `fadeIn 0.5s ease-in-out ${index * 0.1}s both`,
-									}}
+									className="relative group overflow-hidden rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl cursor-pointer"
 									onClick={() => openModal(index)}
 								>
 									<div className="relative w-full pt-[56.25%]">
-										{/* 16:9 aspect ratio wrapper */}
 										<Image
 											src={imageUrl}
 											alt={`${activeProject} image ${index + 1}`}
@@ -192,7 +172,6 @@ export default function Projects() {
 											sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
 										/>
 									</div>
-									{/* Overlay on hover */}
 									<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 										<span className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium px-2 text-center">
 											Click to expand
@@ -203,32 +182,13 @@ export default function Projects() {
 						</div>
 					</div>
 				</div>
-
-				{/* Add keyframe animation styles */}
-				<style jsx>{`
-					@keyframes fadeIn {
-						from {
-							opacity: 0;
-							transform: translateY(20px);
-						}
-						to {
-							opacity: 1;
-							transform: translateY(0);
-						}
-					}
-					.animate-fadeIn {
-						animation: fadeIn 0.5s ease-in-out forwards;
-					}
-				`}</style>
 			</section>
 
-			{/* Full Screen Modal */}
 			{modalOpen && (
 				<div
 					className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex items-center justify-center"
 					onClick={closeModal}
 				>
-					{/* Exit Button */}
 					<button
 						onClick={closeModal}
 						className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-all duration-300 hover:scale-110"
@@ -249,7 +209,6 @@ export default function Projects() {
 						</svg>
 					</button>
 
-					{/* Previous Button */}
 					<button
 						onClick={(e) => {
 							e.stopPropagation();
@@ -273,7 +232,6 @@ export default function Projects() {
 						</svg>
 					</button>
 
-					{/* Next Button */}
 					<button
 						onClick={(e) => {
 							e.stopPropagation();
@@ -297,7 +255,6 @@ export default function Projects() {
 						</svg>
 					</button>
 
-					{/* Image Counter - Changed to Dots */}
 					<div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full flex gap-1.5 sm:gap-2">
 						{currentImages.map((_, idx) => (
 							<button
@@ -316,7 +273,6 @@ export default function Projects() {
 						))}
 					</div>
 
-					{/* Modal Content */}
 					<div
 						className="relative w-full h-full flex items-center justify-center p-4 md:p-8"
 						onClick={(e) => e.stopPropagation()}
