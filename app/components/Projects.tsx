@@ -14,9 +14,9 @@ const projectDescriptions = {
 	project1:
 		"A self-hosted Web Application that allows storage operations such as uploading, sharing, viewing, and organization creation, with real-time features for Antipolo Campus.",
 	project2:
-		"A fully responsive dog adoption website that allows users to browse various dog breeds, view detailed information about each dog, and easily complete the adoption process to give a furry friend a loving home",
+		"A fully responsive, professionally designed website developed for AP Global IT Solutions I that dynamically presents comprehensive company information, services, and insights through an intuitive user interface optimized for seamless viewing across all devices.",
 	project3:
-		"Breakfast at Antonio's is a streamlined ordering system designed to help customers effortlessly browse menu items, customize their selections, and place food orders directly from the restaurant.",
+		"A fully responsive dog adoption website that allows users to browse various dog breeds, view detailed information about each dog, and easily complete the adoption process to give a furry friend a loving home",
 };
 
 const projectImagesData: ProjectImages = {
@@ -27,16 +27,38 @@ const projectImagesData: ProjectImages = {
 		"/projects/1NEBULA/1.4.jpg",
 	],
 	project2: [
-		"/projects/2Doggie/2.1.jpg",
-		"/projects/2Doggie/2.2.jpg",
-		"/projects/2Doggie/2.3.jpg",
-		"/projects/2Doggie/2.4.jpg",
+		"/projects/2Mediko/2.1.png",
+		"/projects/2Mediko/2.2.png",
+		"/projects/2Mediko/2.3.png",
+		"/projects/2Mediko/2.4.png",
 	],
 	project3: [
-		"/projects/3Software/3.1.png",
-		"/projects/3Software/3.2.png",
-		"/projects/3Software/3.3.png",
-		"/projects/3Software/3.4.png",
+		"/projects/3Doggie/3.1.jpg",
+		"/projects/3Doggie/3.2.jpg",
+		"/projects/3Doggie/3.3.jpg",
+		"/projects/3Doggie/3.4.jpg",
+	],
+};
+
+const projectTechStacks = {
+	project1: [
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+	],
+	project2: [
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+	],
+	project3: [
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+		"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg",
 	],
 };
 
@@ -49,6 +71,7 @@ export default function Projects() {
 
 	const currentImages = projectImagesData[activeProject];
 	const currentDescription = projectDescriptions[activeProject];
+	const currentTechStack = projectTechStacks[activeProject];
 
 	const prevImage = useCallback(() => {
 		setCurrentImageIndex((prev) =>
@@ -147,12 +170,34 @@ export default function Projects() {
 
 					<div className="max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 text-center px-4 sm:px-6">
 						<p
-							className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed transition-colors duration-300 ${
+							className={`text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed transition-colors duration-300 mb-8 sm:mb-10 ${
 								darkMode ? "text-gray-300" : "text-gray-600"
 							}`}
 						>
 							{currentDescription}
 						</p>
+
+						<div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10">
+							{currentTechStack.map((iconUrl, index) => (
+								<div
+									key={index}
+									className="transition-transform duration-300 hover:scale-110"
+								>
+									<Image
+										src={iconUrl}
+										alt="Tech icon"
+										width={48}
+										height={48}
+										className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 ${
+											darkMode &&
+											(iconUrl.includes("nextjs") || iconUrl.includes("github"))
+												? "invert brightness-200"
+												: ""
+										}`}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
 
 					<div className="transition-all duration-500 ease-in-out">

@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Metadata } from "next";
+import ScrollProgress from "./navigation/ScrollProgress";
 const inter = Inter({
 	subsets: ["latin"],
 	weight: "400",
@@ -19,7 +20,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<ThemeProvider>{children}</ThemeProvider>
+				<ThemeProvider>
+					<ScrollProgress />
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);

@@ -5,3 +5,26 @@
 		@apply bg-gray-100 text-black dark:bg-black dark:text-white transition-colors duration-300;
 	}
 }
+
+/* Optional: Smooth scrolling for the whole page */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling (optional) */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #1f1823;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #7a6284;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #52425c;
+}
